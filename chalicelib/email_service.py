@@ -1,5 +1,5 @@
 import boto3
-from typing import Dict, List, Any
+from typing import Dict, List
 from datetime import datetime
 
 
@@ -7,8 +7,14 @@ class EmailService:
     def __init__(self, region_name: str = "us-east-1"):
         self.ses = boto3.client("ses", region_name=region_name)
 
-    def send_email(self, subject: str, body: str, to_address: str, from_address: str, 
-                   html_body: str = None):
+    def send_email(
+        self,
+        subject: str,
+        body: str,
+        to_address: str,
+        from_address: str,
+        html_body: str = None,
+    ):
         """Send email with optional HTML body."""
         message_body = {"Text": {"Data": body}}
         if html_body:
@@ -24,8 +30,9 @@ class EmailService:
         )
         return response
 
-    def format_comedy_alert_html(self, results: Dict[str, Dict[str, List[str]]], 
-                                venue_name: str = "Comedy Venue") -> str:
+    def format_comedy_alert_html(
+        self, results: Dict[str, Dict[str, List[str]]], venue_name: str = "Comedy Venue"
+    ) -> str:
         """Format comedy show results into HTML email."""
         if not any(results.values()):
             return self._get_no_shows_html(venue_name)
@@ -57,18 +64,20 @@ class EmailService:
         for date, shows in results.items():
             if shows:
                 formatted_date = self._format_date_display(date)
-                html_parts.append(f'<div class="date-section">')
+                html_parts.append('<div class="date-section">')
                 html_parts.append(f'<div class="date-title">📅 {formatted_date}</div>')
-                
+
                 for venue, comedians in shows.items():
-                    html_parts.append(f'<div class="show">')
+                    html_parts.append('<div class="show">')
                     html_parts.append(f'<div class="venue">🎪 {venue}</div>')
-                    html_parts.append(f'<div class="comedians">')
+                    html_parts.append('<div class="comedians">')
                     for comedian in comedians:
-                        html_parts.append(f'<span class="comedian">⭐ {comedian}</span>')
-                    html_parts.append(f'</div></div>')
-                
-                html_parts.append(f'</div>')
+                        html_parts.append(
+                            f'<span class="comedian">⭐ {comedian}</span>'
+                        )
+                    html_parts.append("</div></div>")
+
+                html_parts.append("</div>")
 
         html_parts.append("""
                 <div style="margin-top: 30px; text-align: center; color: #666; font-size: 12px;">
@@ -80,13 +89,16 @@ class EmailService:
 
         return "".join(html_parts)
 
-    def format_comedy_alert_text(self, results: Dict[str, Dict[str, List[str]]], 
-                                venue_name: str = "Comedy Venue") -> str:
+    def format_comedy_alert_text(
+        self, results: Dict[str, Dict[str, List[str]]], venue_name: str = "Comedy Venue"
+    ) -> str:
         """Format comedy show results into plain text email."""
         if not any(results.values()):
             return f"No shows found with your favorite comedians at {venue_name} in the next 7 days."
 
-        text_parts = [f"{venue_name} Comedy Alert - Your favorite comedians are performing!\n"]
+        text_parts = [
+            f"{venue_name} Comedy Alert - Your favorite comedians are performing!\n"
+        ]
         text_parts.append("=" * 60 + "\n")
 
         for date, shows in results.items():
@@ -94,7 +106,7 @@ class EmailService:
                 formatted_date = self._format_date_display(date)
                 text_parts.append(f"\n📅 {formatted_date}\n")
                 text_parts.append("-" * 30 + "\n")
-                
+
                 for venue, comedians in shows.items():
                     text_parts.append(f"🎪 {venue}\n")
                     for comedian in comedians:

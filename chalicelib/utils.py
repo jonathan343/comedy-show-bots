@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from typing import List
 
+
 def get_next_days(days: int = 7) -> List[str]:
     """
     Returns the next N days (including today) in 'YYYY-MM-DD' format.

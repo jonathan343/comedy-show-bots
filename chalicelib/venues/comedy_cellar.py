@@ -42,11 +42,13 @@ class ComedyCellarBot(VenueBot):
                 name = name_tag.get_text(strip=True) if name_tag else "Unknown"
                 comedians.append(name)
 
-            shows.append(Show(
-                time_and_venue=time_and_venue,
-                comedians=comedians,
-                date=date,
-                raw_data={"venue": self.name}
-            ))
+            shows.append(
+                Show(
+                    time_and_venue=time_and_venue,
+                    comedians=comedians,
+                    date=date,
+                    raw_data={"venue": self.name},
+                )
+            )
 
         return shows

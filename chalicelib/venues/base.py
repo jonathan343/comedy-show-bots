@@ -3,7 +3,13 @@ from typing import List, Dict, Any
 
 
 class Show:
-    def __init__(self, time_and_venue: str, comedians: List[str], date: str, raw_data: Dict[str, Any] = None):
+    def __init__(
+        self,
+        time_and_venue: str,
+        comedians: List[str],
+        date: str,
+        raw_data: Dict[str, Any] = None,
+    ):
         self.time_and_venue = time_and_venue
         self.comedians = comedians
         self.date = date
@@ -27,7 +33,9 @@ class VenueBot(ABC):
         """Return a unique identifier for this venue."""
         pass
 
-    def find_favorite_comedians(self, shows: List[Show], favorite_comedians: List[str]) -> Dict[str, List[str]]:
+    def find_favorite_comedians(
+        self, shows: List[Show], favorite_comedians: List[str]
+    ) -> Dict[str, List[str]]:
         """Find shows with favorite comedians."""
         results = {}
         for show in shows:
