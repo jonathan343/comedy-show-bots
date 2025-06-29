@@ -22,5 +22,5 @@ echo '{
   "resources": [ "arn:aws:events:us-east-1:123456789012:rule/MyScheduledRule" ],
   "detail": {},
   "version": ""
-}' | chalice invoke -n check_comedy_shows --profile jonathan343
+}' | chalice invoke -n check_comedy_shows --profile <profile_name>
 ```
