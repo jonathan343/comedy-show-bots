@@ -5,7 +5,9 @@ This chalice app fetches show data from comedy venue APIs, checks for shows wher
 
 ## Example Email
 
-<img src="assets/images/email_example.jpeg" alt="Screenshot of an example email with upcoming Comedy Cellar shows including favorite comedians" width="300">
+<div align="center">
+  <img src="assets/images/email_example.jpeg" alt="Screenshot of an example email with upcoming Comedy Cellar shows including favorite comedians" width="300">
+</div>
 
 ## Deploying
 
