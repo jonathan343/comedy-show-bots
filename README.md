@@ -3,11 +3,19 @@
 ## Project Overview
 This chalice app fetches show data from comedy venue APIs, checks for shows where favorite comedians are performing, and sends daily email alerts at 9am with this information.
 
+## Example Email
+
+![Screenshot of an example email with upcoming Comedy Cellar shows including favorite comedians](/assets/images/email_example.jpeg)
+
+## Deploying
+
 To deploy the comedy-show-bots, run the following command:
 
 ```
 chalice deploy --profile <profile_name>
 ```
+
+## Invoking
 
 To manually invoke your lambda function, run:
 
