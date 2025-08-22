@@ -26,7 +26,7 @@ class Config:
     ]
 
     EMAIL_TO = os.environ.get("EMAIL_TO", "jonathangee09@gmail.com")
-    EMAIL_FROM = os.environ.get("EMAIL_FROM", "jonathangee09@gmail.com")
+    EMAIL_FROM = os.environ.get("EMAIL_FROM", "comedy-alerts@jonathangaytan.com")
     AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
 
     @classmethod
