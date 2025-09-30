@@ -1,5 +1,5 @@
 from chalice import Chalice
-from chalicelib.venues import ComedyCellarBot
+from chalicelib.venues import ComedyCellarBot, TheStandBot
 from chalicelib.email_service import EmailService
 from chalicelib.bot_service import ComedyBotService
 from chalicelib.config import Config
@@ -7,7 +7,7 @@ from chalicelib.config import Config
 app = Chalice(app_name="comedy-show-bots", debug=True)
 
 email_service = EmailService(region_name=Config.AWS_REGION)
-venues = [ComedyCellarBot()]
+venues = [ComedyCellarBot(), TheStandBot()]
 bot_service = ComedyBotService(venues=venues, email_service=email_service)
 
 
