@@ -10,6 +10,7 @@ venv/
 env/
 
 # AWS Chalice
+.chalice/deployed/
 .chalice/deployments/
 .chalice/venv/
 
